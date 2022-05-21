@@ -1,13 +1,15 @@
 <div style="text-align: center; margin: 2rem 0;">
     <div class="bokdol_header_logo">
-        <h1>BokDol</h1>
+        <a href="{% url 'accountapp:hello_world' %}" style="text-decoration: none; color: black">
+            <h1>BokDol</h1>
+        </a>
     </div>
     <div class="header_navs">
         <span>nav1</span>
-        <span>nav2</span>
-        <span>nav3</span>
+
         {% if not user.is_authenticated %}
-        <a href="{% url 'accountapp:login' %}?next={{ request.path }}"><span>Login</span></a>
+            <a href="{% url 'accountapp:login' %}?next={{ request.path }}"><span>Login</span></a>
+            <a href="{% url 'accountapp:create' %}?next={{ request.path }}"><span>Sign Up</span></a>
         {% else %}
             <a href="{% url 'accountapp:detail' pk=user.pk %}">My Page</a>
             <a href="{% url 'accountapp:logout' %}?next={{ request.path }}"><span>Logout</span></a>
