@@ -20,54 +20,30 @@
 
     </style>
 
-    <div class="container">
-      <div class="item1">
-          <img src="https://picsum.photos/200/200">
-      </div>
-      <div class="item2">
-          <img src="https://picsum.photos/200/220">
-      </div>
-    <div class="item3">
-          <img src="https://picsum.photos/200/250">
-      </div>
-    <div class="item4">
-          <img src="https://picsum.photos/200/150">
-      </div>
-    <div class="item5">
-          <img src="https://picsum.photos/200/280">
-      </div>
-    <div class="item6">
-          <img src="https://picsum.photos/200/270">
-      </div>
-    <div class="item7">
-          <img src="https://picsum.photos/200/240">
-      </div>
-    <div class="item8">
-          <img src="https://picsum.photos/150/200">
-      </div>
-    <div class="item9">
-          <img src="https://picsum.photos/220/200">
-      </div>
-    <div class="item10">
-          <img src="https://picsum.photos/220/230">
-      </div>
-    <div class="item11">
-          <img src="https://picsum.photos/210/210">
-      </div>
-    <div class="item12">
-          <img src="https://picsum.photos/240/220">
-      </div>
-    <div class="item13">
-          <img src="https://picsum.photos/260/240">
-      </div>
-    </div>
+    {% if article_list %}
+        <div class="container">
+          {% for article in article_list %}
+            <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                <img src="{{article.image.url}}" style="max-width: 15rem">
+            </a>
+          {% endfor %}
+        </div>
+        <script src="{% static 'js/magicgrid.js' %}"></script>
+    {% else %}
+        <div style="text-align: center">
+            No Articles Yet
+        </div>
+    {% endif %}
+
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+
     <div style="text-align: center">
         <a href="{% url 'articleapp:create' %}" class="btn btn-dark col-3 mt-3 mb-3">
             Post an Article
         </a>
     </div>
 
-<script src="{% static 'js/magicgrid.js' %}"></script>
+
 
 
 {% endblock %}
