@@ -5,6 +5,7 @@
 
 .header_navs {
     font-family: 'Nunito', sans-serif;
+
 }
 
 .footer_buttons {
@@ -13,4 +14,8 @@
 
 .bokdol_footer_logo {
     font-family: 'Pacifico', cursive;
+}
+
+a {
+    text-decoration: none;
 }
