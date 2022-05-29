@@ -4,16 +4,25 @@
 {% block content %}
 
     <style>
-        .container div {
-          width: 250px;
-          background-color: antiquewhite;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 8px;
+
+        .container {
+            padding: 0;
+            margin: 0 auto;
         }
 
-        .container img{
+        .container a {
+            width: 42%;
+            max-width: 250px;
+        }
+
+        .container div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+
+        .container img {
             width: 100%;
             border-radius: 8px;
         }
@@ -22,11 +31,11 @@
 
     {% if article_list %}
         <div class="container">
-          {% for article in article_list %}
-            <a href="{% url 'articleapp:detail' pk=article.pk %}">
-                <img src="{{article.image.url}}" style="max-width: 15rem">
-            </a>
-          {% endfor %}
+            {% for article in article_list %}
+                <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                    <img src="{{ article.image.url }}" style="max-width: 15rem">
+                </a>
+            {% endfor %}
         </div>
         <script src="{% static 'js/magicgrid.js' %}"></script>
     {% else %}
@@ -38,7 +47,7 @@
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
     <div style="text-align: center">
-        <a href="{% url 'articleapp:create' %}" class="btn btn-dark col-3 mt-3 mb-3">
+        <a href="{% url 'articleapp:create' %}" class="btn btn-dark col-6 mt-3 mb-3">
             Post an Article
         </a>
     </div>
