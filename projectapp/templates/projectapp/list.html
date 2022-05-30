@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-
     <style>
 
         .container {
@@ -31,24 +30,28 @@
         }
 
     </style>
-
     {% if project_list %}
+
         <div class="container">
             {% for project in project_list %}
                 <a href="{% url 'projectapp:detail' pk=project.pk %}" style="text-decoration: none">
                     <div style="display: block;">
                         <img src="{{ project.image.url }}" style="max-width: 15rem">
                         <h6 style="color: black; text-align: center"
-                            class="mt-2">{{ project.title | truncatechars:8 }}</h6>
+                            class="mt-2">{{ project.title | truncatechars:6 }}</h6>
                     </div>
                 </a>
             {% endfor %}
         </div>
+
         <script src="{% static 'js/magicgrid.js' %}"></script>
+
     {% else %}
+
         <div style="text-align: center">
             No Projects Yet
         </div>
+
     {% endif %}
 
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
@@ -58,8 +61,5 @@
             Create a new project
         </a>
     </div>
-
-
-
 
 {% endblock %}
