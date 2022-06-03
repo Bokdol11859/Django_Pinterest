@@ -30,6 +30,7 @@
         {% for article in article_list %}
             <a href="{% url 'articleapp:detail' pk=article.pk %}">
                 <img src="{{ article.image.url }}" style="max-width: 15rem">
+                <p style="color: black; text-decoration: none; text-align: center; margin-top: 0.5rem">{{ article.title }}</p>
             </a>
         {% endfor %}
     </div>
