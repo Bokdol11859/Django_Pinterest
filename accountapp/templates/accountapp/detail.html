@@ -24,9 +24,10 @@
 
             {% if target_user == user %}
                 {% if target_user.profile %}
-                    <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+                    <a class="material-icons" style="color: black"
+                       href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
                         <p>
-                            Edit Profile
+                            edit
                         </p>
                     </a>
                 {% else %}
@@ -36,14 +37,14 @@
                         </p>
                     </a>
                 {% endif %}
-                <a href="{% url 'accountapp:update' pk=user.pk %}">
+                <a class="material-icons" style="color: black" href="{% url 'accountapp:update' pk=user.pk %}">
                     <p>
-                        Update Info
+                        settings
                     </p>
                 </a>
-                <a href="{% url 'accountapp:delete' pk=user.pk %}">
+                <a class="material-icons" style="color: black" href="{% url 'accountapp:delete' pk=user.pk %}">
                     <p>
-                        Delete Account
+                        cancel
                     </p>
                 </a>
             {% endif %}
@@ -53,7 +54,6 @@
 
     </div>
     <div>
-        <h2 style="text-align: center; margin-bottom: 2rem">Created Posts</h2>
         {% include 'snippets/list_fragment.html' with article_list=object_list %}
     </div>
 
