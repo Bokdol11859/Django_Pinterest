@@ -1,12 +1,10 @@
 FROM python:3.10.0
 
-RUN echo "testing"
-
 WORKDIR /home/
 
 RUN git clone https://github.com/Bokdol11859/django_pinterest.git
 
-WORKDIR /home/pragmatic
+WORKDIR /home/django_pinterest
 
 RUN pip install -r requirements.txt
 
